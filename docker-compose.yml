@@ -1,0 +1,13 @@
+version: '2'
+services:
+  postgres:
+    image: 'postgres:latest'
+    restart: always
+    volumes:
+      - './postgres_data:/var/lib/postgresql/data'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/djdownloader
+      - SPRING_DATASOURCE_USERNAME=djuser
+      - SPRING_DATASOURCE_PASSWORD=djpassword
+    ports:
+      - '5432:5432'
