@@ -38,7 +38,7 @@ public class YouTubeController {
       return downloader.downloadFile(fileName)
                        .map(resource -> ResponseEntity.ok()
                                                       .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-                                                      .header("X-Original-Title", fileName)
+                                                      .header("X-Original-Title", fileName.replace("." + format, ""))
                                                       .header("X-Artist", artist) // Puedes obtener esto de los metadatos del video
                                                       .header("X-Duration", duration) // Puedes obtener esto de los metadatos del video
                                                       .body(resource))
